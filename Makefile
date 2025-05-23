@@ -27,7 +27,7 @@ APPVERSION_P = 7
 APPDEVELOPPER="Ledger"
 APPCOPYRIGHT="(c) 2024 Ledger"
 
-VARIANT_VALUES = bitcoin_testnet_legacy bitcoin_legacy bitcoin_cash bitcoin_gold litecoin dogecoin dash horizen komodo stratis peercoin pivx viacoin vertcoin digibyte bitcoin_private firo gamecredits zclassic nix lbry ravencoin hydra hydra_testnet xrhodium
+VARIANT_VALUES = bitcoin_testnet_legacy bitcoin_legacy bitcoin_cash bitcoin_gold litecoin dogecoin dash horizen komodo stratis peercoin pivx viacoin vertcoin digibyte bitcoin_private firo gamecredits zclassic nix lbry ravencoin hydra hydra_testnet xrhodium pepecoin
 
 # Application source files
 # There is no additional sources for bitcoin
@@ -35,7 +35,7 @@ VARIANT_VALUES = bitcoin_testnet_legacy bitcoin_legacy bitcoin_cash bitcoin_gold
 
 # simplify for tests
 ifndef COIN
-COIN=bitcoin_testnet_legacy
+COIN=pepecoin
 endif
 
 # Enabling DEBUG flag will enable PRINTF and disable optimizations
@@ -425,6 +425,19 @@ COIN_KIND=COIN_KIND_HYDRA
 COIN_FLAGS=FLAG_SEGWIT_CHANGE_SUPPORT
 APPNAME ="Hydra"
 APP_LOAD_PARAMS += --path "44'/609'"
+
+else ifeq ($(COIN),pepecoin)
+# Pepe
+BIP44_COIN_TYPE=3434 
+BIP44_COIN_TYPE_2=3434 
+COIN_P2PKH_VERSION=56 
+COIN_P2SH_VERSION=22 
+COIN_FAMILY=1 
+COIN_COINID=\"Pepecoin\" 
+COIN_COINID_NAME="Pepecoin"
+COIN_COINID_SHORT=\"PEPE\" 
+COIN_KIND=COIN_KIND_DOGE
+APPNAME ="Pepecoin"
 
 else ifeq ($(filter clean,$(MAKECMDGOALS)),)
 $(error Unsupported COIN - use $(VARIANT_VALUES))
