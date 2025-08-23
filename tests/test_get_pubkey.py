@@ -8,7 +8,7 @@ from ragger.navigator import NavInsID
 def pubkey_instruction_approve(model: Firmware) -> Instructions:
     instructions = Instructions(model)
 
-    if model.is_nano:
+    if model.name.startswith("nano"):
         instructions.new_request("Approve")
     else:
         instructions.address_confirm()
@@ -20,7 +20,7 @@ def pubkey_instruction_approve(model: Firmware) -> Instructions:
 def pubkey_instruction_warning_approve(model: Firmware) -> Instructions:
     instructions = Instructions(model)
 
-    if model.is_nano:
+    if model.name.startswith("nano"):
         instructions.new_request("Approve")
         instructions.same_request("Approve")
     else:
