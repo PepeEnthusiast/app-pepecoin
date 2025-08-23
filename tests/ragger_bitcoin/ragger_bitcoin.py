@@ -20,7 +20,7 @@ TESTS_ROOT_DIR = Path(__file__).parent
 class RaggerClient(LegacyClient):
     def __init__(self, comm_client: TransportClient, screenshot_dir: Path = TESTS_ROOT_DIR) -> None:
         self.app = btchip(RaggerAdaptor(comm_client, screenshot_dir))
-        self.chain = Chain.TEST
+        self.chain = Chain.MAIN
 
     def get_extended_pubkey(
             self, path: str, display: bool = False, navigator: Optional[Navigator] = None,
@@ -70,9 +70,21 @@ class RaggerClient(LegacyClient):
         self.app.signMessagePrepare(bip32_path, message)
         signature = self.app.signMessageSign()
 
+        # Make signature into standard bitcoin format
+        rLength = signature[3]
+        r = signature[4: 4 + rLength]
+        sLength = signature[4 + rLength + 1]
+        s = signature[4 + rLength + 2:]
+        if rLength == 33:
+            r = r[1:]
+        if sLength == 33:
+            s = s[1:]
+
+        sig = bytearray(chr(27 + 4 + (signature[0] & 0x01)), 'utf8') + r + s
+
         self.app.dongle.set_navigation(False, navigator, testname, instructions)
 
-        return base64.b64encode(signature).decode('utf-8')
+        return base64.b64encode(sig).decode('utf-8')
 
 
 def createRaggerClient(backend, screenshot_dir: Path = TESTS_ROOT_DIR) -> RaggerClient:

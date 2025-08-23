@@ -37,8 +37,8 @@ def pubkey_instruction_warning_approve(model: Firmware) -> Instructions:
 def test_get_public_key(navigator: Navigator, firmware: Firmware,
                         client: RaggerClient, test_name: str):
     testcases = {
-        "m/84'/1'/2'/0/10":
-        "tpubDG9YpSUwScWJBBSrhnAT47NcT4NZGLcY18cpkaiWHnkUCi19EtCh8Heeox268NaFF6o56nVeSXuTyK6jpzTvV1h68Kr3edA8AZp27MiLUNt"}
+        "m/44'/3434'/1'/0/10":
+        "xpub6HGrHERVNseCdXM8e8DsPVzkvewtRCFxMbKgzDpvkjFBLN2KKBY2z7sciBQguwSuwnwxrVXpxMwth1W7sFwrjF9T6PBQEZzbhAtwQFzhBdG"}
     for path, pubkey in testcases.items():
         assert pubkey == client.get_extended_pubkey(
             path=path,
@@ -48,12 +48,12 @@ def test_get_public_key(navigator: Navigator, firmware: Firmware,
             testname=f"{test_name}_{path}"
         )
     testcases = {
-        "m/44'/1'/0'": "tpubDCwYjpDhUdPGP5rS3wgNg13mTrrjBuG8V9VpWbyptX6TRPbNoZVXsoVUSkCjmQ8jJycjuDKBb9eataSymXakTTaGifxR6kmVsfFehH1ZgJT",
-        "m/44'/1'/10'": "tpubDCwYjpDhUdPGp21gSpVay2QPJVh6WNySWMXPhbcu1DsxH31dF7mY18oibbu5RxCLBc1Szerjscuc3D5HyvfYqfRvc9mesewnFqGmPjney4d",
-        "m/44'/1'/2'/1/42": "tpubDGF9YgHKv6qh777rcqVhpmDrbNzgophJM9ec7nHiSfrbss7fVBXoqhmZfohmJSvhNakDHAspPHjVVNL657tLbmTXvSeGev2vj5kzjMaeupT",
-        "m/48'/1'/4'/1'/0/7": "tpubDK8WPFx4WJo1R9mEL7Wq325wBiXvkAe8ipgb9Q1QBDTDUD2YeCfutWtzY88NPokZqJyRPKHLGwTNLT7jBG59aC6VH8q47LDGQitPB6tX2d7",
-        "m/49'/1'/1'/1/3": "tpubDGnetmJDCL18TyaaoyRAYbkSE9wbHktSdTS4mfsR6inC8c2r6TjdBt3wkqEQhHYPtXpa46xpxDaCXU2PRNUGVvDzAHPG6hHRavYbwAGfnFr",
-        "m/86'/1'/4'/1/12": "tpubDHTZ815MvTaRmo6Qg1rnU6TEU4ZkWyA56jA1UgpmMcBGomnSsyo34EZLoctzZY9MTJ6j7bhccceUeXZZLxZj5vgkVMYfcZ7DNPsyRdFpS3f",
+        "m/44'/3434'/0'": "xpub6CSbihR8Ms5HAfpTRChCJT7SGYwveG8Cw6qzmHsbMwqG9DtGXgEbrFmVSH5JTvEYZxNZmapzJcyeKzZ7f8YhnmUcE1hpMDjDFjSEPxtYiTZ",
+        "m/44'/3434'/10'": "xpub6CSbihR8Ms5HaU5BX8yR3oTRHxAoHpE4D1LvMazszVrPUzJdTf1gsxwh39jfFyfn8FcHi72kd6NBsSCbtiPtn7y5qBRBe1yYbr62ZR2oDSF",
+        "m/44'/3434'/2'/1/42": "xpub6H2vdf5L1aVC14Dt8gSxJfgUnrEXhUsfyFX1pkJ5vczchqTjG8Lm6PXqeg3jFvW4dk2CWGwCBjyrJ96nbcWbkuzeCyNtAcP8zur8Ga6URwe",
+        "m/48'/3434'/4'/1'/0/7": "xpub6HgYBttK7fPbQNPLYXrYoFGx8Ykkuyc99n7oDR7ZnrozbFc4b7ti4kDvMRke7vRx77L1SRqnmmYBp9uJoyzujutGXcEh3ibViG9sfY7qLfU",
+        "m/49'/3434'/1'/1/3": "xpub6FkXDHNruwko45LvVGYYuD26pyYzS7imw96JoZoWMrBUPxx5eEzFXD69UPeUtSWe6mkj8SWRJrw5ZU45uyua8pWifkRghiLNbu5LBnAMb7a",
+        "m/86'/3434'/4'/1/12": "xpub6GFmd5JwGzRjQEAUVBMBjcf4kGR1sPyDqYZKzmokNVBgZKz51CcyqTdHwv4BTcYae1ZF2GSZahvxWViVfTvW8DbRE5gXwcnr4h1CSnpo6sz",
     }
 
     for path, pubkey in testcases.items():

@@ -23,9 +23,9 @@ def message_instruction_approve(model: Firmware) -> Instructions:
 def test_sign_message(navigator: Navigator, firmware: Firmware,
                       client: RaggerClient, test_name: str):
     message = "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks."
-    bip32_path = "m/44'/1'/0'/0/0"
+    bip32_path = "m/44'/3434'/0'/0/0"
     result = client.sign_message(message=message, bip32_path=bip32_path, navigator=navigator,
                                  instructions=message_instruction_approve(firmware),
                                  testname=test_name)
 
-    assert result == "MUUCIQDkeGEVZZiRjMfh+z4ELx81gBdBwIK1IIEHkXZ6FiqcqQIgfaAberpvF+XbOCM5Cd/ljogNyU3w2OIL8eYCyZ6Ru2k="
+    assert result == "H7R+raoNLSi+Lxsr8FfurE+aI+uBnOeB5rkst6jmX4BHDFoXJBM0mfxtyG2vCdlT8e8l3/bVFzkWYeNZvy5AWkI="

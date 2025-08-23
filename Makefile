@@ -28,9 +28,9 @@ APPVERSION_P = 3
 APPDEVELOPPER="Ledger"
 APPCOPYRIGHT="(c) 2024 Ledger"
 
-APPNAME ="Bitcoin clone boilerplate"
+APPNAME ="Pepecoin"
 
-VARIANT_VALUES = bitcoin_clone_boilerplate
+VARIANT_VALUES = pepecoin
 
 # Application source files
 # There is no additional sources for bitcoin
@@ -38,33 +38,35 @@ VARIANT_VALUES = bitcoin_clone_boilerplate
 
 # simplify for tests
 ifndef COIN
-COIN=bitcoin_clone_boilerplate
+COIN=pepecoin
 endif
 
 # Enabling DEBUG flag will enable PRINTF and disable optimizations
 #DEBUG = 1
 
-ifeq ($(COIN),bitcoin_clone_boilerplate)
+ifeq ($(COIN),pepecoin)
 	
 # Refer to : https://github.com/dan-da/coinparams/blob/master/coinprefixes.md
 BIP44_COIN_TYPE=1
-BIP44_COIN_TYPE_2=1
-COIN_P2PKH_VERSION=111
-COIN_P2SH_VERSION=196
-COIN_NATIVE_SEGWIT_PREFIX=\"tb\" 
+BIP44_COIN_TYPE_2=3434
+COIN_P2PKH_VERSION=56
+COIN_P2SH_VERSION=22
 
 # Name of the coin that will be used in the app display
-COIN_COINID_NAME="Bitcoin Clone BP"
+COIN_COINID_NAME="Pepecoin"
 
 # Ticker that will be used in the transaction display
-COIN_COINID_SHORT=\"BP\" 
+COIN_COINID_SHORT=\"PEP\"
 
 # Sign message magic header
-COIN_COINID=\"Bitcoin\"
+COIN_COINID=\"Pepecoin\"
 
 # COIN_FAMILY can be set to FAMILY_BITCOIN, FAMILY_PEERCOIN, or FAMILY_STEALTH to handle 
 # parsing of the timestamp in the transaction (see lib-app-bitcoin/transaction.c)
 COIN_FAMILY=FAMILY_BITCOIN
+
+# Coin kind (see lib-app-bitcoin/context.h)
+COIN_KIND=COIN_KIND_DOGE
 
 # COIN_FLAGS can be set to FLAG_PEERCOIN_UNITS, FLAG_PEERCOIN_SUPPORT, or
 # FLAG_SEGWIT_CHANGE_SUPPORT, (see lib-app-bitcoin/transaction.c and
